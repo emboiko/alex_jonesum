@@ -16,7 +16,7 @@ class Alex_Jones:
         for i in range(count):
             pontifications.append(isms.pop())
 
-        if randint(1,10) > 5:
+        if randint(1,2) > 1:
             punctuation_index = randint(0, count-3)
             pontifications[punctuation_index] = pontifications[punctuation_index] + ","
 
@@ -25,13 +25,16 @@ class Alex_Jones:
         return sep.join(pontifications) + end
 
 
-    def rant(self):
+    def rant(self, count=None):
         heavy_knowledge = []
 
-        count = randint(3,10)
+        if not count:
+            count = randint(4,8)
+
         angry_index = randint(0,count-1)
+
         for i in range(count):
-            if (i == angry_index):
+            if (i == angry_index) and randint(1,4) > 3:
                 heavy_knowledge.append(self.pontificate().upper().replace(".","!"))
             else:
                 heavy_knowledge.append(self.pontificate())
@@ -41,7 +44,6 @@ class Alex_Jones:
 
 def main():
     alex_jones = Alex_Jones()
-
     print(alex_jones.rant())
 
 
