@@ -1,9 +1,11 @@
 from random import randint, shuffle
+from pathlib import Path
 
 
 class Alex_Jones:
     def __init__(self):
-        with open("isms.txt") as in_file:
+        path = Path(__file__).parent.parent 
+        with open(f"{path}/isms.txt") as in_file:
             self.isms = in_file.read().splitlines()
             shuffle(self.isms)
 
