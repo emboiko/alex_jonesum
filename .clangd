@@ -1,0 +1,7 @@
+CompileFlags:
+  Add:
+    # Core header
+    - "-Isrc"
+    # Note: External headers (Python.h, node_api.h) are intentionally not hard-coded
+    # here to avoid leaking machine-specific paths. Configure your editor locally if
+    # you want those includes resolved.

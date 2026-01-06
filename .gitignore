@@ -1,1 +1,28 @@
 .vscode
+
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.node
+*.pyd
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.pyc
+*.pyo
+
+# Python
+python/alex_jonesum/vocabulary.txt
+python/alex_jonesum/jonesum.c
+python/alex_jonesum/jonesum.h
+python/build/
+python/dist/
+
+# Node.js
+node/build/
+node/node_modules/
+node/vocabulary.txt

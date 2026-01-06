@@ -1,0 +1,37 @@
+{
+  "name": "alex-jonesum",
+  "version": "2.0.0",
+  "description": "Alex Jones Ipsum generator with C core and Node.js bindings",
+  "main": "src/jonesum.js",
+  "files": [
+    "src/",
+    "vocabulary.txt",
+    "binding.gyp"
+  ],
+  "scripts": {
+    "preinstall": "node copy-vocabulary.js",
+    "install": "node-gyp rebuild",
+    "prepack": "node copy-vocabulary.js",
+    "test": "node -e \"const AlexJones=require('./src/jonesum');const alex=new AlexJones();console.log(alex.rant(2));\""
+  },
+  "keywords": [
+    "lorem",
+    "ipsum",
+    "generator",
+    "alex-jones",
+    "native",
+    "bindings"
+  ],
+  "author": "Emboiko",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emboiko/alex_jonesum.git"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "gypfile": true,
+  "dependencies": {},
+  "devDependencies": {}
+}
