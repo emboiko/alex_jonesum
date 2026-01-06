@@ -126,7 +126,7 @@ class SdistWithData(sdist):
 
 setup(
     name="alex-jonesum",
-    version="2.0.0",
+    version="2.0.1",
     description="Alex Jones Ipsum generator with C core and Python bindings",
     long_description=long_description,
     long_description_content_type="text/markdown",

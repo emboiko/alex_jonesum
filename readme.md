@@ -200,16 +200,24 @@ cd python
 python -m build  # Creates both sdist and wheels
 ```
 
-Wheels are platform-specific (e.g., `alex_jonesum-2.0.0-cp311-cp311-win_amd64.whl` for Windows 64-bit Python 3.11).
-
 ### What gets included in packages?
 
 **npm package** (`node/package.json` `files` field):
 
 - `src/` (JavaScript + native source code)
 - `vocabulary.txt` (copied during `prepack`)
+- `README.md` (copied during `prepack`)
 - `binding.gyp` (build configuration)
 - **Not included**: `node_modules/`, `build/` (compiled artifacts)
+
+**Why does Node use both `prepare` and `prepack`?**
+
+- **`prepack`** runs right before `npm pack` / `npm publish`. We use it to copy repo assets
+  (C core source/header, `vocabulary.txt`, and `README.md`) into the package so the published
+  tarball is self-contained and npm can render the README.
+- **`prepare`** runs when installing from a git URL and in some local/dev flows. It points to
+  the same script so the package is usable without requiring a separate manual “copy assets”
+  step during development.
 
 **Python package** (`python/setup.py` + `MANIFEST.in`):
 
@@ -267,6 +275,10 @@ The wrappers often look “similar” because they both do the same job: convert
 ## Releasing (manual process)
 
 This repo is a monorepo, but **npm and PyPI releases are separate**. Keep versions in sync manually for now.
+
+**Versioning policy**: we keep **Node and Python versions in lockstep** (same version number),
+even if a given patch only changes one side. This avoids confusion and makes it easy to know
+which releases correspond across registries.
 
 ### 1) Update versions (must match)
 

@@ -2,8 +2,8 @@
     "targets": [
         {
             "target_name": "jonesum",
-            "sources": ["src/addon.cc", "../src/jonesum.c"],
-            "include_dirs": ["../src"],
+            "sources": ["src/addon.cc", "src/jonesum.c"],
+            "include_dirs": ["src"],
             "conditions": [
                 [
                     "OS!='win'",

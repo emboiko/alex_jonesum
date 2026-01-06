@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "alex-jonesum"
-version = "2.0.0"
+version = "2.0.1"
 description = "Alex Jones Ipsum generator with C core and Python bindings"
 requires-python = ">=3.6"
 dynamic = ["readme"]

@@ -1,17 +1,18 @@
 {
   "name": "alex-jonesum",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Alex Jones Ipsum generator with C core and Node.js bindings",
   "main": "src/jonesum.js",
   "files": [
     "src/",
     "vocabulary.txt",
-    "binding.gyp"
+    "binding.gyp",
+    "README.md"
   ],
   "scripts": {
-    "preinstall": "node copy-vocabulary.js",
+    "prepare": "node copy-assets.js",
     "install": "node-gyp rebuild",
-    "prepack": "node copy-vocabulary.js",
+    "prepack": "node copy-assets.js",
     "test": "node -e \"const AlexJones=require('./src/jonesum');const alex=new AlexJones();console.log(alex.rant(2));\""
   },
   "keywords": [

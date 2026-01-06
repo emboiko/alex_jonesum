@@ -8,6 +8,7 @@
 *.dll
 *.node
 *.pyd
+*.tgz
 build/
 dist/
 *.egg-info/
@@ -26,3 +27,6 @@ python/dist/
 node/build/
 node/node_modules/
 node/vocabulary.txt
+node/README.md
+node/src/jonesum.c
+node/src/jonesum.h
