@@ -12,14 +12,20 @@ This repo is intentionally a **bindings demo**:
 
 The public API is intentionally small: you call `rant()`.
 
-Internally, `rant()` concatenates multiple sentences produced by “pontification”.
+Internally, `rant()` concatenates multiple sentences produced by Alex's internal process of `pontification`.
 
 - In C, `jonesum_rant()` calls `jonesum_pontificate()` repeatedly.
 - In Python and Node.js, only `rant()` is exposed (no public `pontificate()` method).
 
 ### Python
 
-Install (from repo root in this case):
+Install (normal users):
+
+```bash
+pip install alex-jonesum
+```
+
+Install (from this repo):
 
 ```bash
 cd python
@@ -38,7 +44,13 @@ print(alex.rant(6))
 
 ### Node.js
 
-Install (from repo root in this case):
+Install (normal users):
+
+```bash
+npm install alex-jonesum
+```
+
+Install (from this repo):
 
 ```bash
 cd node
@@ -150,7 +162,7 @@ Or manually:
 
 ```bash
 cd node
-node -e "const AlexJones=require('./src/jonesum');const alex=new AlexJones();console.log(alex.rant(3));"
+node -e "const AlexJones=require('./src/jonesum'); const alex=new AlexJones(); console.log(alex.rant(3));"
 ```
 
 ## How compilation works for end users
@@ -160,12 +172,10 @@ node -e "const AlexJones=require('./src/jonesum');const alex=new AlexJones();con
 When someone runs `npm install alex-jonesum`:
 
 1. **npm downloads the package** from the registry (includes source code in the tarball)
-2. **npm runs the `install` script** (defined in `package.json`), which executes:
-   - `preinstall`: copies `vocabulary.txt` to the package directory
-   - `install`: runs `node-gyp rebuild`, which:
-     - Reads `binding.gyp` to understand what to compile
-     - Compiles `src/addon.cc` (C++) and `../src/jonesum.c` (C) into a native addon
-     - Produces `build/Release/jonesum.node` (or `build/Debug/jonesum.node` in debug mode)
+2. **npm runs the `install` script** (defined in `package.json`): `node-gyp rebuild`, which:
+   - Reads `binding.gyp` to understand what to compile
+   - Compiles `src/addon.cc` (C++) and `src/jonesum.c` (C) into a native addon
+   - Produces `build/Release/jonesum.node` (or `build/Debug/jonesum.node` in debug mode)
 3. **The compiled `.node` file** is platform-specific (Windows `.node`, Linux `.node`, macOS `.node`)
 
 **Key point**: npm packages with native modules **compile on the user's machine** during installation. The source code is included in the npm package, and users need build tools installed.
