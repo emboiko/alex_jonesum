@@ -1,6 +1,6 @@
 {
   "name": "alex-jonesum",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Alex Jones Ipsum generator with C core and Node.js bindings",
   "main": "src/jonesum.js",
   "files": [

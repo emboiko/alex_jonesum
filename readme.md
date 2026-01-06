@@ -8,6 +8,11 @@ This repo is intentionally a **bindings demo**:
 - **Python bindings**: a Python C-extension in [`python/alex_jonesum/_jonesum.c`](python/alex_jonesum/_jonesum.c)
 - **Node.js bindings**: an N-API addon in [`node/src/addon.cc`](node/src/addon.cc)
 
+## Web app
+
+- **Live site**: [`jonesum.wtf`](https://jonesum.wtf/)
+- **Webapp repo**: [`emboiko/alex_jonesum_app`](https://github.com/emboiko/alex_jonesum_app)
+
 ## API
 
 The public API is intentionally small: you call `rant()`.
@@ -290,6 +295,9 @@ This repo is a monorepo, but **npm and PyPI releases are separate**. Keep versio
 even if a given patch only changes one side. This avoids confusion and makes it easy to know
 which releases correspond across registries.
 
+**Tip**: PyPI does not allow re-uploading the same filename. If `python/dist/` contains older builds,
+either delete them first or upload only the current version’s files.
+
 ### 1) Update versions (must match)
 
 - Node: [`node/package.json`](node/package.json) `version`
@@ -307,8 +315,9 @@ npm publish
 
 ```bash
 cd python
+Remove-Item -Recurse -Force dist, build, *.egg-info -ErrorAction SilentlyContinue
 python -m build
-python -m twine upload dist/*
+python -m twine upload dist/alex_jonesum-<VERSION>*
 ```
 
 ### 4) Tag the release (recommended)
